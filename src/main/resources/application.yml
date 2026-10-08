@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+app:
+  parse:
+    rows-per-upload: 5000
+    payload-size-kb: 64
+  gc:
+    temp-chunks-per-request: 80
+    temp-chunk-size-kb: 256
+    promoted-objects-per-request: 40
+    promoted-chunk-size-kb: 2048
+    full-gc-promoted-objects-per-request: 60
+    full-gc-promoted-chunk-size-kb: 4096
+    survivor-retain-every-nth-batch: 10
+  visibility:
+    use-volatile: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.demo.leak: INFO
